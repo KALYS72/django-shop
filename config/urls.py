@@ -16,22 +16,23 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-'''-------------------------------------------Swagger docs-------------------------------------------'''
+"""=============Swagger docs============="""
 from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 
 swagger_view = get_schema_view(
     openapi.Info(
-        title='Blog API',
+        title="Auth API",
         default_version='v1',
-        description='Blog API'
+        description="auth API"
     ),
     public=True
 )
-'''---------------------------------------------------------------------------------------------------'''
+"""======================================"""
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('docs/', swagger_view.with_ui('swagger', cache_timeout=8)),
+    path('docs/', swagger_view.with_ui('swagger', cache_timeout=0)),
     path('account/', include('account.urls')),
+    path('', include('main.urls')),
 ]
