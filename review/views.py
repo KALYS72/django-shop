@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from rest_framework.viewsets import ModelViewSet
+from .serializers import CommentSerializer, RatingSerializer
+from .models import Comment, Rate
 
-# Create your views here.
+class CommentViewSet(ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+
+class RatingViewSet(ModelViewSet):
+    queryset = Rate.objects.all()
+    serializer_class = RatingSerializer
